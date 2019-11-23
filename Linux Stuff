@@ -1,50 +1,24 @@
 A Linux Admin Should take Backup Every Day Must watch the Logs Every day .
 
-    To Know the Distribution Name and Version Which We Using
-
+To Know the Distribution Name and Version Which We Using
 # lsb_release -a
 
-    To know the Kernel Version We Currently Using
-
-
+To know the Kernel Version We Currently Using
 # uname -mrs  (or)  uname -a 
 
-    To see the Linux Version
-
-
+To see the Linux Version
 # cat /proc/version
 
-    To Check the Architecture Which We using
-
-
+To Check the Architecture Which We using
 # arch
 
-    How to Create A ISO File From Ubuntu Disk
-
-    Syntax if = input of = output
-
+How to Create A ISO File From Ubuntu Disk
+Syntax if = input of = output
 # dd if=/dev/cdrom of=/tmp/ubuntu
-
-    This Will Create ISO Little faster
-
-
+This Will Create ISO Little faster
 # dd if=/dev/cdrom of=/tmp/ubuntu bs=4M
-
-    This will Navigate to the up Directory from /home/sysadmin/Desktop/tmp/dir1/a/b/c
-
-# $ cd ../../../..
-
-To Here
-
-/home/sysadmin/Desktop/tmp
-
-    Automatically Correct Mistype Directory Names, this will check the spell and if its wrong while we type it will make correct automatically
-
-shopt -s cdspell
-
-Grep Commands
-
-Grep and its Options
+=======================================================================================
+Grep Commands Grep and its Options
 
     -v = non-matching lines
     -c = count of matching lines
@@ -98,7 +72,7 @@ grep queue.$ /var/log/mail.log
 To find the Count of empty lines in a file
 
 grep -c ^$ /var/log/mail.log
-
+=========================================================================
 Find commands
 
 Syntax:
@@ -215,7 +189,7 @@ To find large file more than 50MB size inside a Directory and subdirectory
 find . -type f -size +50000k | xargs du -sh
 
 xargs Command
-
+===========================================================================================
 To Download a list of files which in a download.txt
 
 # cat download.txt | xargs wget -c
@@ -229,7 +203,7 @@ To Download list of links from a file
 To Download only sub-directory by avoiding parent Dir
 
 # wget -i -np http://links-to-download/list/packages
-
+==============================================================================================
 Sort Command
 
 To find the Duplicated lines in a file
@@ -256,22 +230,3 @@ Diff Commands
 
 diff -w diff.txt diff1.txt
 
-Watch Command
-
-To execute command Continously
-
-watch vmstat 
-
-AC Commands
-
-Display Total Connect Time of Users
-
-ac -d
-
-Connect time for all the users
-
-ac -p
-
-Connect time for a specific user
-
-ac -d sysadmin
