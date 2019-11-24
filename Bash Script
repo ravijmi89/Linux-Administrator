@@ -1,0 +1,6 @@
+Q-5. Write a shell script to display the last updated file or the newest file in a directory?
+
+Ans.Following is the test script to list the most recently changed file.
+
+#!/bin/bash 
+ls -lrt | grep ^- | awk 'END{print $NF}'
