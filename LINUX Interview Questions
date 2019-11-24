@@ -6,3 +6,38 @@
 6.Utilization issues - CPU , MEMORY , DISK
 7.Hardware errors and troubleshoot
 8.PAtch installation / roll back
+
+Question 1: Explain Booting procedure or steps in Linux?
+
+1. Once System powered on, it automatically invokes BIOS
+
+2. BIOS will start the processor and perform a POST [power on self test] to check the connected device are ready to use and are working properly.
+
+3. After POST ,  BIOS will check for the booting device. The boot sector is always the first sector of the hard disk and BIOS will load the MBR into the memory.
+   MBR holds the boot loader of the OS.
+
+4. Then boot loader takes the control of the booting process.
+
+5. GRUB is the boot loader for Linux.
+
+6. Depending on the boot option selected the kernel is loaded first.
+
+7. After kernel is loaded the kernel will take the control of the booting process
+
+8. Initrd will be loaded which contains drivers to detect hardware (its called Initialization of RAM Disk)
+
+9. Then it will initialize all the hardware including I/O processors etc.
+
+10. Kernel will mounts the root partition as read-only
+
+11. INIT is loaded as the first process.
+
+12. INIT will mount the root partition and other partitions as read/write and checks for file system errors.
+
+13. Sets the System Clock, hostname etc..
+
+14. Based on the Runlevel, it will load the services and runs the startup scripts which are located in /etc/rcX.d/ (Network, nfs, SSH etc.)
+
+15. Finally it runs the rc.local script & Now the login prompt will appear.
+
+==============================================================================================================================
