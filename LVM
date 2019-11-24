@@ -31,3 +31,5 @@ Step:4 Now reduce the size using lvreduce command.
  #lvreduce -L 10G /dev/mapper/vg_cloud-LogVol00
 Step:5 (Optional) For the safer side, now check the reduced file system for errors
  #e2fsck -f /dev/mapper/vg_cloud-LogVol00
+Step:6 Mount the file system and verify its size.
+# mount /home/lvm_folder
