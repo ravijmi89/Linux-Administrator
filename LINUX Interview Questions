@@ -41,3 +41,91 @@ Question 1: Explain Booting procedure or steps in Linux?
 15. Finally it runs the rc.local script & Now the login prompt will appear.
 
 ==============================================================================================================================
+What is stage 1.5 boot loaded in linux?
+
+GRUB Stage 1.5 is located in the first 30 kilobytes of hard disk immediately following the MBR and before the first partition. 
+If this space is not available (Unusual partition table, special disk drivers, GPT or LVM disk), 
+the installation of Stage 1.5 will fail. The stage 1.5 image contains file system drivers.
+Stage 1 Boot loaded is : MBR
+Stage 1.5 Boo loader : e2fs_stage1_5
+Stage 2 Boot loader is  : GRUB
+
+===========================================================================================================================
+Booting into rescue mode and reinstalling GRUB2
+
+1. Boot from the RHEL7 installation DVD by altering the boot order in Bios and selecting DVD media as the first booting preference.
+Note : Older version of RHEL 7 DVD will not work here. So make sure you have latest version RHEL 7 DVD with you.
+
+2. At the boot screen, Select the Troubleshooting option at the end of the screen.
+3. At the next screen, select the option Rescue a CentOS Linux system.
+4. On the next screen, press enter to continue. When asked if you would like Rescue to find your installation, choose Continue.
+If you run into trouble detecting your install, retry using the Skip option and manually detect and mount your storage. 
+You would get a message shown in the picture below if the rescue mode has detected the correct installation.
+
+5. Next step is to change your root directory to /mnt/sysimage using the chroot command. This makes your system the root environment.
+# chroot /mnt/sysimage
+
+6. Use the grub2-install command to re-write the MBR to your boot device. The boot device is usually /dev/sda.
+# grub2-install /dev/sda
+You should get a successful installation message as shown below.
+
+====================================================================================================================
+ Question 4:  Linux Booting Issues : How to solve ??
+
+Option 1: init not found error
+Option 2: Run fsck on all FS in rescue mode
+Option 3: Reinstall GRUB
+Option 4: Recover grub.conf / grub configuration
+
+Option 1: For normal panic and "init not found" error.
+
+Error : "init not found" displayed
+
+1) Launch the system to Bash shell prompt
+
+Reboot the server and interrupt to edit the GRUB.
+
+Edit grub and enter the below in last
+
+init=/bin/bash
+
+Then save and exit and boot the server. This will launch you straight into a Bash shell prompt.Then you can remount “/” file system and check /var/log/messages for any error.
+
+Note :  init=/bin/bash (Grub boot loader) or linux init=/bin/bash (if Lilo boot loader).
+
+2) Once server booted and if it is in Bash shell prompt
+
+ #mount -o remount,rw /
+
+3) Now  you can check the log messages and try to find the reason for server pacnic or error.
+
+#more /var/log/messages
+
+
+Option 2:  If the above option not helped then follow the next
+
+1) Boot from the Linux First CD (boot CD).
+
+2) Type “boot rescue” at Linux boot prompt.
+
+3) After the bash shell prompt show up, type the below command
+
+   # chroot /mnt/sysimage
+
+a) Run fsck and Check for any disk error
+
+  #fdisk -l /dev/sda  //check how many partion you have
+
+   then run fsck on each partition
+    
+  #fsck -y /dev/sda2'
+
+Option 3: If the above also not helped then reinstall grub and retry.
+
+ In rescue mode.
+
+   #  chroot /mnt/sysimage
+
+   # /sbin/grub-install /dev/hda
+
+
