@@ -1,0 +1,17 @@
+Mount Options
+
+    -auto: Allows the file system to be mounted automatically by using the mount –a command
+    -loop: Mounts the image as a loop device
+    -noauto: Disallows the automatic mount of the file system by using the mount –a command
+    -noexec: Disallows the execution of binary files on the file system
+    -nouser: Disallows an ordinary user (other than root) to mount and unmount the file system
+    -remount: Remounts the file system in case it is already mounted
+    -ro: Mounts the file system for reading only
+    -rw: Mounts the file system for both reading and writing
+    -user: Allows an ordinary user (other than root) to mount and unmount the file system
+Journaling Mount Options
+
+    -data=journal: The highest level. The one that does the most journaling. This writes the journal entries for all the data and metadata changes. All data is committed into the journal before being written into the main file system.
+    -data=ordered: The default mode. All data is forced directly out to the main file system before its metadata is committed to the journal.
+    -data=writeback: The lowest level. Data ordering is not preserved. Data can be written into the main file system after its metadata has been committed to the journal.
+mount –o nouser,ro /dev/xvdf1 /test
