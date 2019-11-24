@@ -19,7 +19,8 @@ lvcreate -L 18G -n tecmint_documents tecmint_add_vg
 # mount /dev/tecmint_add_vg/tecmint_documents /mnt/tecmint_documents/
 #mount -aV
 =======================================================================================
-Reducing Logical Volume:
+Reduce LVM partition size:
+
 Step:1 Umount the file system 
   #umount /home/lvm_folder
 Step:2 check the file system for Errors using e2fsck command.
@@ -33,3 +34,30 @@ Step:5 (Optional) For the safer side, now check the reduced file system for erro
  #e2fsck -f /dev/mapper/vg_cloud-LogVol00
 Step:6 Mount the file system and verify its size.
 # mount /home/lvm_folder
+================================================================================================
+Extend LVM partition size
+Step:1  Create Physical Volume on new disk
+Check the new disk using ‘ fdisk -l ‘ command and create the physical volume, in my case new disk is ‘/dev/sdb’
+ #pvcreate /dev/sdb
+Step:2 Now extend the Size of Volume Group using vgextend.
+ #vgextend vg_cloud /dev/sdb
+Step:3 Verify the size of Volume Group.
+ #vgdisplay vg_cloud
+Step:4 Extend lvm partition size with lvextend command 
+ #lvextend -L +5G /dev/mapper/vg_cloud-LogVol00
+Step:5 Run resize2fs command
+ #resize2fs /dev/mapper/vg_cloud-LogVol00
+Step:6 Verify the file system size
+ #df -Th /home/
+
+
+
+
+
+
+
+
+
+
+
+
