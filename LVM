@@ -1,1 +1,17 @@
+Logical volume manager (LVM) introduces an extra layer between the physical disks and the file system allowing file systems to be 
+– resized and moved easily and online without requiring a system-wide outage.
+– Using discontinuous space on disk
+– meaningful names to volumes, rather than the usual cryptic device names.
+– span multiple physical disks
+# pvcreate /dev/sda1 /dev/sdb1 /dev/sdc1
+# vgcreate -s 32M tecmint_add_vg /dev/sda1 /dev/sdb1 /dev/sdc1
+Option 	Meaning
+-s 	Physical extent size
+-p 	Max number of PVs
+-l – Creating using Extent Size
+-n – Give a Logical Volume name.
+-L-Logical Volumes using GB Size’s
 
+lvcreate -l (Extend size) -n (name_of_logical_volume) (volume_group)
+# lvcreate -l 575 -n tecmint_documents tecmint_add_vg
+lvcreate -L 18G -n tecmint_documents tecmint_add_vg
