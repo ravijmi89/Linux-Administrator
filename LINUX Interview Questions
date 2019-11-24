@@ -1,0 +1,8 @@
+1.Booting procedure of linux server
+2.user administration
+3.LVM -FS creation/ extend / FS issues & recover
+4.Software install / remove / update - RPM or YUM
+5.Basic services config /troubleshoot - E.G : NFS ,FTP , SAMBA , DNS , DHCP
+6.Utilization issues - CPU , MEMORY , DISK
+7.Hardware errors and troubleshoot
+8.PAtch installation / roll back
