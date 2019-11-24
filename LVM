@@ -15,3 +15,19 @@ Option 	Meaning
 lvcreate -l (Extend size) -n (name_of_logical_volume) (volume_group)
 # lvcreate -l 575 -n tecmint_documents tecmint_add_vg
 lvcreate -L 18G -n tecmint_documents tecmint_add_vg
+# mkfs.ext4 /dev/tecmint_add_vg/tecmint_documents
+# mount /dev/tecmint_add_vg/tecmint_documents /mnt/tecmint_documents/
+#mount -aV
+=======================================================================================
+Reducing Logical Volume:
+Step:1 Umount the file system 
+  #umount /home/lvm_folder
+Step:2 check the file system for Errors using e2fsck command.
+  #e2fsck -f /dev/mapper/vg_cloud-LogVol00
+   -f to forcefully check the file system
+Step:3 Reduce or Shrink the size of /home to desire size.
+ #resize2fs /dev/mapper/vg_cloud-LogVol00 10G
+Step:4 Now reduce the size using lvreduce command.
+ #lvreduce -L 10G /dev/mapper/vg_cloud-LogVol00
+Step:5 (Optional) For the safer side, now check the reduced file system for errors
+ #e2fsck -f /dev/mapper/vg_cloud-LogVol00
