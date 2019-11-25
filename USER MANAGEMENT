@@ -34,17 +34,29 @@ The ‘usermod‘ command is simple to use with lots of options to make changes 
     -u = Used to Assigned UID for the user account between 0 to 999.
     -U = To unlock the user accounts. This will remove the password lock and allow us to use the user account.
 ==============================================================================================================  
-  Create a User with Different Home Directory
+Create a User with Different Home Directory
    # useradd -d /data/projects anusha
    
-  Create a User with Specific User ID
+Create a User with Specific User ID
    # useradd -u 999 navin
    
-  Create a User with Specific Group ID
+Create a User with Specific Group ID
    #useradd -u 1000 -g 500 tarunika
    
-  Add a User to Multiple Groups
+Add a User to Multiple Groups
   # useradd -G admins,webadmin,developers tecmint
+  
+Add a User without Home Directory
+   #useradd -M shilpi
+   
+Create a User with Account Expiry Date
+  #useradd -e 2014-03-27 aparna
+
+chage -l aparna
+Create a User with Password Expiry Date
+ #useradd -e 2014-04-27 -f 45 tecmint
+Change User Login Shell:
+ #useradd -s /sbin/nologin tecmint
   
   
   
