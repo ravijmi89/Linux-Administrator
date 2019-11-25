@@ -1,1 +1,78 @@
+Linux Commands to manage Local Accounts – useradd, usermod, chage & passwd
+ 
+   - useradd command is used to create new accounts in Linux
+   - usermod command used to modify the existing accounts in linux
+   - userdel command is used to delete local account in linux
+   - passwd command used assign password to local accounts or users.
+   - chage comamnd is used to view & modify users password expiry information
 
+To add a new user account, you can run either of the following two commands as root.
+    # adduser [new_account]
+    # useradd [new_account]
+
+Understanding /etc/passwd
+  [username]:[x]:[UID]:[GID]:[Comment]:[Home directory]:[Default shell]
+Understanding /etc/group
+  [Group name]:[Group password]:[GID]:[Group members]
+ 
+ # usermod --expiredate 2014-10-30 --append --groups root,users --home /tmp --shell /bin/sh tecmint
+ 
+Options of Usermod
+The ‘usermod‘ command is simple to use with lots of options to make changes to an existing user. Let us see how to use usermod command by modifying some existing users in Linux box with the help of following options.
+
+    -c = We can add comment field for the useraccount.
+    -d = To modify the directory for any existing user account.
+    -e = Using this option we can make the account expiry in specific period.
+    -g = Change the primary group for a User.
+    -G = To add a supplementary groups.
+    -a = To add anyone of the group to a secondary group.
+    -l = To change the login name from tecmint to tecmint_admin.
+    -L = To lock the user account. This will lock the password so we can’t use the account.
+    -m = moving the contents of the home directory from existing home dir to new dir.
+    -p = To Use un-encrypted password for the new password. (NOT Secured).
+    -s = Create a Specified shell for new accounts.
+    -u = Used to Assigned UID for the user account between 0 to 999.
+    -U = To unlock the user accounts. This will remove the password lock and allow us to use the user account.
+==============================================================================================================  
+  Create a User with Different Home Directory
+   # useradd -d /data/projects anusha
+   
+  Create a User with Specific User ID
+   # useradd -u 999 navin
+   
+  Create a User with Specific Group ID
+   #useradd -u 1000 -g 500 tarunika
+   
+  Add a User to Multiple Groups
+  # useradd -G admins,webadmin,developers tecmint
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
