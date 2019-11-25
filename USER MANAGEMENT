@@ -57,7 +57,10 @@ Create a User with Password Expiry Date
  #useradd -e 2014-04-27 -f 45 tecmint
 Change User Login Shell:
  #useradd -s /sbin/nologin tecmint
-  
+Add a User with Specific Home Directory, Default Shell and Custom Comment
+ #useradd -m -d /var/www/ravi -s /bin/bash -c "TecMint Owner" -U ravi
+Add a User with Home Directory, Custom Shell, Custom Comment and UID/GID
+ #useradd -m -d /var/www/tarunika -s /bin/zsh -c "TecMint Technical Writer" -u 1000 -g 1000 tarunika
   
   
   
