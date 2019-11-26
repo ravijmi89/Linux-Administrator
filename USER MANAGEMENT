@@ -61,7 +61,8 @@ Add a User with Specific Home Directory, Default Shell and Custom Comment
  #useradd -m -d /var/www/ravi -s /bin/bash -c "TecMint Owner" -U ravi
 Add a User with Home Directory, Custom Shell, Custom Comment and UID/GID
  #useradd -m -d /var/www/tarunika -s /bin/zsh -c "TecMint Technical Writer" -u 1000 -g 1000 tarunika
-  
+Add a User with Home Directory, No Shell, Custom Comment and User ID
+ #useradd -m -d /var/www/avishek -s /usr/sbin/nologin -c "TecMint Sr. Technical Writer" -u 1019 avishek
   
   
   
