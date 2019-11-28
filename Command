@@ -9,9 +9,75 @@ Mount Options
     -ro: Mounts the file system for reading only
     -rw: Mounts the file system for both reading and writing
     -user: Allows an ordinary user (other than root) to mount and unmount the file system
-Journaling Mount Options
 
-    -data=journal: The highest level. The one that does the most journaling. This writes the journal entries for all the data and metadata changes. All data is committed into the journal before being written into the main file system.
-    -data=ordered: The default mode. All data is forced directly out to the main file system before its metadata is committed to the journal.
-    -data=writeback: The lowest level. Data ordering is not preserved. Data can be written into the main file system after its metadata has been committed to the journal.
+Journaling Mount Options
+   -data=journal: The highest level. The one that does the most journaling. This writes the journal
+     entries for all the data and metadata changes. All data is committed into the journal before being
+     written into the main file system.
+   -data=ordered: The default mode. All data is forced directly out to the main file system before 
+     its metadata is committed to the journal.
+   -data=writeback: The lowest level. Data ordering is not preserved. Data can be written into 
+     the main file system after its metadata has been committed to the journal.
 mount –o nouser,ro /dev/xvdf1 /test
+
+=================================================================================================================================
+ssh command
+  Options:
+
+    -1: Forces ssh to use protocol SSH-1 only.
+    -2: Forces ssh to use protocol SSH-2 only.
+    -4: Allows IPv4 addresses only.
+    -6: Allows IPv6 addresses only.
+    -A: Authentication agent connection forwarding is enabled.
+    -a: Authentication agent connection forwarding is disabled.
+    -C: Compresses all data (including stdin, stdout, stderr, and data for forwarded X11 and TCP connections) 
+        for a faster transfer of data.
+    -f: Requests ssh to go to background just before command execution.
+    -g: Allows remote hosts to connect to local forwarded ports.
+    -n: Prevents reading from stdin.
+    -p port_number: Port to connect to on the remote host.
+    -q: Suppresses all errors and warnings
+    -V: Display the version number.
+    -v: Verbose mode. It echoes everything it is doing while establishing a connection.
+        It is very useful in the debugging of connection failures
+    -X: Enables X11 forwarding (GUI Forwarding).
+    -c cipher_spec: Selects the cipher specification for encrypting the session. 
+    Specific cipher algorithm will be selected only if both the client and the server support it.
+
+There are three major encryption techniques used by SSH:
+
+Symmetrical encryption: This encryption works on the principle of the generation of a single key 
+       for encrypting as well as decrypting the data. The secret key generated is distributed among the 
+       clients and the hosts for a secure connection. Symmetrical encryption is the most basic encryption 
+       and performs best when data is encrypted and decrypted on a single machine.
+Asymmetrical encryption: This encryption is more secure because it generates two different keys: 
+    Public and Private key. A public key is distributed to different host machines while the private key is kept 
+    securely on the client machine. A secure connection is established using this public-private key pair.
+Hashing: One-way hashing is an authentication technique which ensures that the received data is unaltered 
+    and comes from a genuine sender. A hash function is used to generate a hash code from the data.
+    It is impossible to regenerate the data from the hash value. The hash value is calculated at the sender 
+    as well as the receiver’s end. If the hash values match, the data is authentic.
+========================================================================================================================
+Setup SSH Passwordless Login
+
+Step 1: Create Authentication SSH-Kegen Keys
+ #ssh-keygen -t rsa -b 4096
+Step 2: Copy the public key to remote-host using ssh-copy-id
+ #ssh-copy-id -i ~/.ssh/id_rsa.pub remote-host
+
+Correct Permission for the ssh folder and files  
+.ssh directory: 700 (drwx------)
+ public key (.pub file): 644 (-rw-r--r--)
+ private key (id_rsa): 600 (-rw-------)
+ lastly your home directory should not be writeable by the group or others (at most 755 (drwxr-xr-x)).
+==========================================================================================================================
+
+ 
+
+
+
+
+
+
+
+
