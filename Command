@@ -72,7 +72,18 @@ Correct Permission for the ssh folder and files
  lastly your home directory should not be writeable by the group or others (at most 755 (drwxr-xr-x)).
 ==========================================================================================================================
 
- 
+chroot command in Linux with examples
+
+chroot command in Linux/Unix system is used to change the root directory. Every process/command in Linux/Unix like systems 
+has a current working directory called root directory. It changes the root directory for currently running processes 
+as well as its child processes.
+
+“chroot” command can be very useful:
+
+    To create a test environment.
+    To recover the system or password.
+    To reinstall the bootloader.
+
 
 
 
