@@ -1,0 +1,4 @@
+1. kldload fuse
+2. gpart show
+3. gpart show -p /dev/da0
+4. ntfs-3g /dev/da0p2 /mnt/NTFS
